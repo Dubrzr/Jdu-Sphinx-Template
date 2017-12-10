@@ -109,27 +109,49 @@
             </ul>
         </div> -->
         <div id="sidebar-wrapper">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            
-            <ul id="sidebar_menu" class="sidebar-nav" style="text-align: right; padding-right: 10px;
-                padding-top: 10px">
-                <li class="sidebar-brand"><a href="#"><span id="main_icon" class="navbar-icon fa fa-bars icon"></span></a></li>
-            </ul>
-<!--             {% if 'singlehtml' not in builder %}
-              {% set global_toc = toctree(maxdepth=theme_navigation_depth|int, collapse=theme_collapse_navigation, includehidden=theme_includehidden) %}
-            {% endif %} -->
-              <!-- Local TOC -->
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a id="menu-toggle" href="#">Start Bootstrap </a></li>
-                <li><a href="#">Home</a> </li>
-                <li><a href="#">About</a> </li>
-                <li><a href="#">Contact</a> </li>
-            </ul>
-              <!-- {{ toc }} -->
+        	<div style="display: flex;">
+			    <div id="sidebar-logos">
+		            <ul class="deep0 sidebar-nav nav-pills nav-stacked">
+<!-- 		                <li>
+		                    <span class="fa-stack fa-lg"><img style="width: 90%;" src="{{ pathto('_static/' + favicon, 1) }}"></span>{{site_name}}
+		                </li> -->
+		                <li><span class="fa-stack fa-lg"><i class="fa fa-search fa-stack-1x "></i></span></li>
+		                <li><span class="fa-stack fa-lg"><i class="fa fa-search fa-stack-1x "></i></span></li>
+		                <li><span class="fa-stack fa-lg"><i class="fa fa-bars fa-stack-1x "></i></span></li>
+		            </ul>
+			    </div>
+			    <div id="sidebar-entries">
+		            <ul class="deep0 sidebar-nav nav-pills nav-stacked" id="menu">
+		                <li>{{site_name}}</li>
+		                <li><input type="text" style="margin: 8px 0px;" class="form-control" id="inputEmail" placeholder="Search a term"></li>
+		                <li class="active">
+		                    <a href="#">Chapter 1</a>
+		                    <ul class="deep1 nav-pills nav-stacked">
+		                        <li><a href="#">link1</a></li>
+		                        <li><a href="#">link2</a></li>
+		                        <li><a href="#">link3</a></li>
+		                    </ul>
+		                </li>
+		                <li>
+		                    <a href="#">Chapter 2</a>
+		                    <ul class="deep1 nav-pills nav-stacked">
+		                        <li><a href="#">link1</a></li>
+		                        <li><a href="#">link2</a></li>
+		                        <li><a href="#">link3</a></li>
+		                    </ul>
+		                </li>
+		                <li>
+		                    <a href="#">Chapter 3</a>
+		                </li>
+		                <li>
+		                    <a href="#">About</a>
+		                </li>
+		                <li>
+		                    <a href="#">Services</a>
+		                </li>
+		            </ul>
+			    </div>
+			</div>
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
@@ -148,6 +170,7 @@
 			    </ul>
 
 			    <div class="bs-docs-section clearfix article" id="article">
+	                <span id="menu-toggle" class="navbar-icon fa fa-bars icon"></span>
 		            {% block body %}{% endblock %}
 		        </div>
 		    </div>
@@ -170,11 +193,32 @@
 	<script src="{{ pathto('_static/custom.js', 1) }}"></script>
 
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        console.log("Toggling...");
-        $("#wrapper").toggleClass("toggled");
-    });
+	    $("#menu-toggle").click(function(e) {
+	        e.preventDefault();
+	        console.log("Toggling...");
+	        $("#wrapper").toggleClass("toggled");
+		    $('#menu ul').hide();
+	    });
+
+		function initMenu() {
+			$('#menu ul').hide();
+			$('#menu ul').children('.current').parent().show();
+			//$('#menu ul:first').show();
+			$('#menu li a').click(function() {
+
+				var checkElement = $(this).next();
+				if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+					return false;
+				}
+				if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+					$('#menu ul:visible').slideUp(200);
+					checkElement.slideDown(200);
+					return false;
+				}
+			});
+
+		};
+		$(document).ready(function() {initMenu();});
     </script>
 
     <!-- script_files -->

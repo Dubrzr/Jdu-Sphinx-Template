@@ -90,7 +90,7 @@ html_theme = 'jdu'
 html_theme_path = ['.']
 
 html_context = {
-    'site_name': 'Jdu Sphinx Template',
+    'site_name': 'ML FutureIsTech',
     'site_description': 'Jdu Sphinx Template by Julien Dubiel'
 }
 
