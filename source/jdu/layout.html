@@ -96,62 +96,75 @@
         </div>
     </div> -->
     <div id="wrapper">
-<!--         <div id="sidebar-wrapper">
-            <ul id="sidebar_menu" class="sidebar-nav" style="text-align: right; padding-right: 10px;
-                padding-top: 10px">
-                <li class="sidebar-brand"><a href="#"><span id="main_icon" class="navbar-icon fa fa-bars icon"></span></a></li>
+        <div id="sidebar">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+	            <li class="clearafter df">
+	            	<span class="al maz fa-stack fa-lg menu-toggle"><i class="fa fa-bars fa-stack-1x "></i></span>
+	            	<p class="menu-title ar maz">ML FutureIsTech</p>
+	            </li>
+                <li class="clearafter df">
+                	<span class="al maz fa-stack fa-lg menu-toggle-open"><i class="fa fa-search fa-stack-1x "></i></span>
+                	<input type="text" class="ar maz form-control" style="width: 221px;" id="inputEmail" placeholder="Search a term">
+                </li>
+                <li class="opened current menu-toggle-open">
+				    <a class="deep0" href="#">
+				    	<div class="al deep0-number">1</div>
+				    	<div class="ar deep0-title">Machine Learning Next Level</div>
+				    </a>
+                    <ul class="deep1">
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#ressources">Ressources</a></li>
+                        <li><a href="#algebre_lineaire">Algèbre Linéaire</a></li>
+                        <li><a href="#mesure_la_qualite_d_un_modele">Mesurer la qualité d'un modèle</a></li>
+                        <li><a href="#methodes_kernel">Méthodes Kernel</a></li>
+                        <li><a href="#pca">PCA - Principal Component analisis</a></li>
+                    </ul>
+                </li>
+                <li class="menu-toggle-open">
+				    <a class="deep0" href="#">
+				    	<div class="al deep0-number">2</div>
+				    	<div class="ar deep0-title">Docker</div>
+				    </a>
+                    <ul class="deep1">
+                        <li><a href="#">link1</a></li>
+                        <li><a href="#">link2</a></li>
+                        <li><a href="#">link3</a></li>
+                    </ul>
+                </li>
+                <li class="menu-toggle-open">
+				    <a class="deep0" href="#">
+				    	<div class="al deep0-number">3</div>
+				    	<div class="ar deep0-title">Chapter 3</div>
+				    </a>
+                    <ul class="deep1">
+                        <li><a href="#">link1</a></li>
+                        <li><a href="#">link2</a></li>
+                        <li><a href="#">link3</a></li>
+                    </ul>
+                </li>
+                <li class="menu-toggle-open">
+				    <a class="deep0" href="#">
+				    	<div class="al deep0-number">4</div>
+				    	<div class="ar deep0-title">About</div>
+				    </a>
+                    <ul class="deep1">
+                        <li><a href="#">link1</a></li>
+                        <li><a href="#">link2</a></li>
+                        <li><a href="#">link3</a></li>
+                    </ul>
+                </li>
+                <li class="menu-toggle-open">
+				    <a class="deep0" href="#">
+				    	<div class="al deep0-number">5</div>
+				    	<div class="ar deep0-title">Services</div>
+				    </a>
+                    <ul class="deep1">
+                        <li><a href="#">link1</a></li>
+                        <li><a href="#">link2</a></li>
+                        <li><a href="#">link3</a></li>
+                    </ul>
+                </li>
             </ul>
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a id="menu-toggle" href="#">Start Bootstrap </a></li>
-                <li><a href="#">Home</a> </li>
-                <li><a href="#">About</a> </li>
-                <li><a href="#">Contact</a> </li>
-            </ul>
-        </div> -->
-        <div id="sidebar-wrapper">
-        	<div style="display: flex;">
-			    <div id="sidebar-logos">
-		            <ul class="deep0 sidebar-nav nav-pills nav-stacked">
-<!-- 		                <li>
-		                    <span class="fa-stack fa-lg"><img style="width: 90%;" src="{{ pathto('_static/' + favicon, 1) }}"></span>{{site_name}}
-		                </li> -->
-		                <li><span class="fa-stack fa-lg"><i class="fa fa-search fa-stack-1x "></i></span></li>
-		                <li><span class="fa-stack fa-lg"><i class="fa fa-search fa-stack-1x "></i></span></li>
-		                <li><span class="fa-stack fa-lg"><i class="fa fa-bars fa-stack-1x "></i></span></li>
-		            </ul>
-			    </div>
-			    <div id="sidebar-entries">
-		            <ul class="deep0 sidebar-nav nav-pills nav-stacked" id="menu">
-		                <li>{{site_name}}</li>
-		                <li><input type="text" style="margin: 8px 0px;" class="form-control" id="inputEmail" placeholder="Search a term"></li>
-		                <li class="active">
-		                    <a href="#">Chapter 1</a>
-		                    <ul class="deep1 nav-pills nav-stacked">
-		                        <li><a href="#">link1</a></li>
-		                        <li><a href="#">link2</a></li>
-		                        <li><a href="#">link3</a></li>
-		                    </ul>
-		                </li>
-		                <li>
-		                    <a href="#">Chapter 2</a>
-		                    <ul class="deep1 nav-pills nav-stacked">
-		                        <li><a href="#">link1</a></li>
-		                        <li><a href="#">link2</a></li>
-		                        <li><a href="#">link3</a></li>
-		                    </ul>
-		                </li>
-		                <li>
-		                    <a href="#">Chapter 3</a>
-		                </li>
-		                <li>
-		                    <a href="#">About</a>
-		                </li>
-		                <li>
-		                    <a href="#">Services</a>
-		                </li>
-		            </ul>
-			    </div>
-			</div>
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
@@ -193,32 +206,41 @@
 	<script src="{{ pathto('_static/custom.js', 1) }}"></script>
 
     <script>
-	    $("#menu-toggle").click(function(e) {
+	    $(".menu-toggle").click(function(e) {
 	        e.preventDefault();
-	        console.log("Toggling...");
-	        $("#wrapper").toggleClass("toggled");
-		    $('#menu ul').hide();
+	        if ($("#wrapper").hasClass("toggled")) {
+		        $("#wrapper").toggleClass("toggled");
+				$(".current").toggleClass("opened");
+			} else {
+		        $("#wrapper").toggleClass("toggled");
+				$(".opened").toggleClass("opened");				
+			}
 	    });
 
-		function initMenu() {
-			$('#menu ul').hide();
-			$('#menu ul').children('.current').parent().show();
-			//$('#menu ul:first').show();
-			$('#menu li a').click(function() {
-
-				var checkElement = $(this).next();
-				if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-					return false;
+	    function openUL(item) {
+	    	var checkElement = item.next();
+			if(checkElement.is('ul')) {
+				if (checkElement.is(':visible')) {
+	    			console.log("visible");
+					checkElement.parent().toggleClass("opened");
+				} else {
+	    			console.log("unvisible");
+					$(".opened").toggleClass("opened");
+					checkElement.parent().toggleClass("opened");
 				}
-				if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-					$('#menu ul:visible').slideUp(200);
-					checkElement.slideDown(200);
-					return false;
-				}
-			});
+			}
+	    };
+	    $(".menu-toggle-open").click(function(e) {
+	    	console.log(e);
+	        e.preventDefault();
+	        if ($("#wrapper").hasClass("toggled")) {
+	        	$("#wrapper").removeClass("toggled");
+				$(".opened").toggleClass("opened");
+				openUL($(this).find("a"));
+	        }
+	    });
 
-		};
-		$(document).ready(function() {initMenu();});
+	    $('#menu li a').click(function() {openUL($(this))});
     </script>
 
     <!-- script_files -->

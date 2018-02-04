@@ -87,5 +87,25 @@ a {
     text-decoration: none;
 }
 .highlight > pre {
-	background: inherit;
+    background: inherit;
+}
+
+.al {
+    float: left;
+
+}
+.ar {
+    float: left;
+}
+.clearafter {
+    clear: both;
+    display: table;
+    content: "";
+}
+
+.df {
+    display: flex;
+}
+.maz {
+    margin: auto 0;
 }
