@@ -7,8 +7,13 @@ Welcome to jdu's documentation!
 ===============================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+
+   chapter1
+   chapter2
+   chapter3
+   chapter4
+   chapter5
+
 
 
 Divers tests

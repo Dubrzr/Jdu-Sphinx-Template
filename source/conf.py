@@ -31,10 +31,16 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.doctest',
-    'sphinx.ext.todo',
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
-    'sphinx.ext.ifconfig']
+    'sphinx.ext.viewcode',
+    'sphinx.ext.ifconfig',
+    'matplotlib.sphinxext.plot_directive'
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -49,7 +55,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'jdu'
+project = 'ML FutureIsTech'
 copyright = '2017, Julien Dubiel'
 author = 'Julien Dubiel'
 
@@ -148,8 +154,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'jdu.tex', 'jdu Documentation',
-     'Julien Dubiel', 'manual'),
+    (master_doc, 'jdu.tex', 'jdu Documentation', 'Julien Dubiel', 'manual'),
 ]
 
 
@@ -158,8 +163,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'jdu', 'jdu Documentation',
-     [author], 1)
+    (master_doc, 'jdu', 'jdu Documentation', [author], 1)
 ]
 
 
@@ -176,3 +180,19 @@ texinfo_documents = [
 
 
 
+
+from sphinx.directives import TocTree
+from docutils.parsers.rst import directives
+
+class myTocTree(TocTree):
+    option_spec = dict(TocTree.option_spec, reversed=directives.flag)
+
+    def run(self):
+        rst = super(myTocTree, self).run()
+        if 'reversed' in self.options:
+            print(rst)
+            rst[0][0]['entries'].reverse()
+        return rst
+
+def setup(app):
+    app.add_directive('toctree', myTocTree)

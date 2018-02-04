@@ -183,7 +183,7 @@
 			    </ul>
 
 			    <div class="bs-docs-section clearfix article" id="article">
-	                <span id="menu-toggle" class="navbar-icon fa fa-bars icon"></span>
+	                {{ toctree(includehidden=theme_sidebar_includehidden, collapse=theme_sidebar_collapse) }}
 		            {% block body %}{% endblock %}
 		        </div>
 		    </div>
