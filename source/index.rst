@@ -3,169 +3,31 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to jdu's documentation!
-===============================
+Data Science by FutureIsTech
+============================
 
-.. toctree::
+Ce site est destiné à fournir des éléments permettant de débuter en Data Science, mais aussi, selon le développement des chapitres, d'approfondir des sujets particuliers.
 
-   chapter1
-   chapter2
-   chapter3
-   chapter4
-   chapter5
+C'est un site collaboratif dans le sens où tout le monde peut éditer les pages de ce site sur `Github <contribuer>`_. Les Pull/Requests sont le moyen de modérer le contenu que vous modifierez ou ajouterez.
 
 
+Sommaire
+========
 
-Divers tests
-============
-
-.. math::
-
-   \sum\limits_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}=\binom{z^2}{u-2}
+Il est conseillé de commencer par les chapitres "Les Bases" et "Méthodologie"
 
 
-Coucou voilà du texte!
-
-.. code-block:: python
-
-   >>> g1 = Sin()
-   >>> g2 = Autoincrement()
-   >>> g3 = RepeatPattern([0,1,2,3,4,5,6])
-   >>> g4 = Normal()
-
-
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 
 
-Utils
-=====
+.. toctree::
+   :maxdepth: 0
 
-AbsoluteOperator
-----------------
+   fiches
+   les_bases
+   methodologie
+   modeles_lineaires
+   svm
+   nn
+   contribuer
 
-This Generator takes a Generator and transforms negatives values to positive.
-
-.. code-block:: python3
-
-    import numpy
-    import matplotlib.pyplot as plt
-    from dsfaker.generators.autoincrement import Autoincrement
-    from dsfaker.generators.trigonometric import Sin
-    from dsfaker.generators.utils import AbsoluteOperator
-
-    x = Autoincrement(start=0, step=0.1, dtype=numpy.float32)
-    y = Sin(x.copy())
-    by = AbsoluteOperator(Sin(x.copy()))
-    x_vals = x.get_batch(300)
-    plt.plot(x_vals, y.get_batch(300), 'o', label='Sin')
-    plt.plot(x_vals, by.get_batch(300), '.', label='Abs(Sin)')
-    plt.legend()
-    plt.show()
-
-ApplyFunctionOperator
----------------------
-
-This Generator apply a function to another Generator.
-
-.. code-block:: python3
-
-    import matplotlib.pyplot as plt
-    from dsfaker.generators.autoincrement import Autoincrement
-    from dsfaker.generators.utils import ApplyFunctionOperator
-
-    x = Autoincrement(start=-50)
-    y = ApplyFunctionOperator(lambda x: 3*x**2-2*x-10, x.copy())
-    plt.plot(x.get_batch(100), y.get_batch(100), '.')
-    plt.show()
-
-
-BoundingOperator
-----------------
-
-This Generator bounds another Generator between a lower bound (lb) and an upper bound (ub).
-
-.. code-block:: python3
-
-    import numpy
-    import matplotlib.pyplot as plt
-    from dsfaker.generators.autoincrement import Autoincrement
-    from dsfaker.generators.trigonometric import Sin
-    from dsfaker.generators.utils import BoundingOperator
-
-    x = Autoincrement(start=0, step=0.1, dtype=numpy.float32)
-    y = Sin(x.copy()) * 10
-    by = BoundingOperator(y.copy(), lb=-5, ub = 7.5)
-    x_vals = x.get_batch(500)
-    plt.plot(x_vals, y.get_batch(500), '.', label="Sin")
-    plt.plot(x_vals, by.get_batch(500), '.', label="Bounded Sin")
-    plt.legend()
-    plt.show()
-
-
-CastOperator
-------------
-
-This Generator takes another Generator and cast its values to a given dtype.
-
-.. code-block:: python3
-
-    import numpy
-    import matplotlib.pyplot as plt
-    from dsfaker.generators.autoincrement import Autoincrement
-    from dsfaker.generators.distributions import Normal
-    from dsfaker.generators.utils import CastOperator
-    x = Autoincrement()
-    y = Normal(seed=22)
-    by = CastOperator(y.copy(), dtype=numpy.int16)
-    x_vals = x.get_batch(50)
-    plt.plot(x_vals, y.get_batch(50), '.', label='Normal law')
-    plt.plot(x_vals, by.get_batch(50), '.', label='Cast to int16')
-    plt.legend()
-    plt.show()
-
-
-ConstantValueGenerator
-----------------------
-
-This Generator simply returns a constant given value indefinitely.
-
-.. code-block:: python3
-
-    import numpy
-    import matplotlib.pyplot as plt
-    from dsfaker.generators.autoincrement import Autoincrement
-    from dsfaker.generators.utils import ConstantValueGenerator
-    x = Autoincrement()
-    y = ConstantValueGenerator(42, dtype=numpy.int16)
-    plt.plot_date(x.get_batch(50), y.get_batch(50), '.')
-    plt.show()
-
-ScalingOperator
----------------
-
-This Generator scales a BoundedGenerator to another range of values.
-
-.. code-block:: python3
-
-    import numpy
-    import matplotlib.pyplot as plt
-    from dsfaker.generators.autoincrement import Autoincrement
-    from dsfaker.generators.trigonometric import Sin
-    from dsfaker.generators.utils import ScalingOperator
-
-    x = Autoincrement(start=0, step=0.1, dtype=numpy.float32)
-    y = Sin(x.copy())
-    by = ScalingOperator(y.copy(), lb=0, ub = 10, dtype=numpy.float32)
-    x_vals = x.get_batch(500)
-    plt.plot(x_vals, y.get_batch(500), '.', label="Sin")
-    plt.plot(x_vals, by.get_batch(500), '.', label="Bounded Sin")
-    plt.legend()
-    plt.show()

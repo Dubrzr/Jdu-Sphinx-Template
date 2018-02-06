@@ -109,3 +109,6 @@ a {
 .maz {
     margin: auto 0;
 }
+.section > h1 {
+    display: none;
+}

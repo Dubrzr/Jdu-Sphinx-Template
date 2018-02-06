@@ -97,7 +97,8 @@ html_theme_path = ['.']
 
 html_context = {
     'site_name': 'ML FutureIsTech',
-    'site_description': 'Jdu Sphinx Template by Julien Dubiel'
+    'site_description': 'Jdu Sphinx Template by Julien Dubiel',
+    'nav': "to_generate"
 }
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -109,7 +110,7 @@ html_favicon = 'favicon.ico'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['jdu/static']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -178,21 +179,55 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+# nav_subchapter = """<li><a href="#">{subchapter}</a></li>"""
+
+# nav_template = """
+# <li class="menu-toggle-open">
+#     <a class="deep0" href="#">
+#         <div class="al deep0-number">{chapter_number}</div>
+#         <div class="ar deep0-title">{chapter_name}</div>
+#     </a>
+#     <ul class="deep1">
+#         {subchapters}
+#     </ul>
+# </li>
+# """
 
 
 
-from sphinx.directives import TocTree
-from docutils.parsers.rst import directives
+# from sphinx.builders.html import StandaloneHTMLBuilder
+# from sphinx.directives import TocTree
+# from docutils.parsers.rst import directives
 
-class myTocTree(TocTree):
-    option_spec = dict(TocTree.option_spec, reversed=directives.flag)
+# class customBuilder(StandaloneHTMLBuilder):
+#     name = 'jdu'
+#     format = 'jdu'
 
-    def run(self):
-        rst = super(myTocTree, self).run()
-        if 'reversed' in self.options:
-            print(rst)
-            rst[0][0]['entries'].reverse()
-        return rst
+# class myTocTree(TocTree):
+#     def run(self):
+#         rst = super(myTocTree, self).run()
+#         print(rst[0][0]['includefiles'])
+#         print(rst[0][0]['maxdepth'])
+#         print(rst[0][0]['caption'])
+#         print(rst[0][0]['glob'])
+#         print(rst[0][0]['hidden'])
+#         print(rst[0][0]['includehidden'])
+#         print(rst[0][0]['numbered'])
+#         print(rst[0][0]['titlesonly'])
+#         print(rst[0][0]['entries'])
+#         for e in rst:
+#             print(e)
+#             for w in e:
+#                 print("  - ", e)
+#         print(self.__dict__)
 
-def setup(app):
-    app.add_directive('toctree', myTocTree)
+
+
+#         subchapters = '\n'.join([nav_subchapter.format(subchapter=x) for x in ['aa', 'bb', 'cc']])
+#         html_context['nav'] = '\n'.join([nav_template.format(chapter_number=i+1, chapter_name=y, subchapters=subchapters) for i, y in enumerate(["z", "y", "x"])])
+#         return rst
+
+# def setup(app):
+#     app.add_directive('toctree', myTocTree)
+#     #app.add_builder(customBuilder)
+#     print(app.__dict__)

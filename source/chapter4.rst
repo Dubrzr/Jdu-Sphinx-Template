@@ -1,5 +1,5 @@
-Probabilités et Statistiques
-============================
+Algorithmes à connaitre
+=======================
 
 
 

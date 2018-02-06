@@ -37,7 +37,7 @@
 
 
 
-#wrapper #sidebar a {
+#wrapper #sidebar .deep1 a, .deep0 {
     font-size: 0.7em;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
@@ -164,7 +164,7 @@ li.current>a>.deep0-number, li.current>a>.deep0-title {
     cursor: pointer;
 }
 
-li.menu-title {
+#sidebar .menu-title a {
     text-align: center;
     width: 242px;
     font-size: 1.7em;
@@ -179,10 +179,10 @@ i.fa-stack-1x {
     margin: 0;
 }
 
-li>ul {
+li>ul.deep1 {
     display: none;
 }
-li.opened>ul {
+li.opened>ul.deep1 {
     display: block;
 }
 
